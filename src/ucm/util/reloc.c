@@ -8,6 +8,8 @@
 #  include "config.h"
 #endif
 
+#include <dlfcn.h>
+
 #include "reloc.h"
 
 #include <ucm/util/khash_safe.h>
