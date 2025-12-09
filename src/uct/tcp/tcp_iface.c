@@ -16,7 +16,7 @@
 #include <ucs/sys/sys.h>
 #include <ucs/config/types.h>
 #include <sys/socket.h>
-#include <sys/poll.h>
+#include <poll.h>
 #include <netinet/tcp.h>
 #include <dirent.h>
 #include <float.h>
