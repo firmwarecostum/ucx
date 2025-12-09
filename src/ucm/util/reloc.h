@@ -11,6 +11,7 @@
 #include <ucs/datastruct/list.h>
 #include <ucs/type/status.h>
 #include <ucm/util/log.h>
+#define _GNU_SOURCE
 #include <dlfcn.h>
 
 
