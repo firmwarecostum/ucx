@@ -18,7 +18,7 @@
 #include <ucs/sys/string.h>
 #include <ucs/vfs/base/vfs_obj.h>
 #include <ucs/vfs/sock/vfs_sock.h>
-#include <sys/signal.h>
+#include <signal.h>
 
 
 ucs_global_opts_t ucs_global_opts = {
