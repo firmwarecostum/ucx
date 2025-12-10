@@ -8,7 +8,6 @@
 #define UCP_TYPES_H_
 
 #include <ucp/api/ucp.h>
-#include <ucs/type/float8.h>
 #include <uct/api/uct.h>
 #include <ucs/datastruct/static_bitmap.h>
 #include <ucs/sys/preprocessor.h>
@@ -102,64 +101,6 @@ extern const ucp_tl_bitmap_t ucp_tl_bitmap_min;
 
 #define UCT_TL_BITMAP_FMT          "0x%lx 0x%lx"
 #define UCT_TL_BITMAP_ARG(_bitmap) (_bitmap)->bits[0], (_bitmap)->bits[1]
-
-
-/**
- * Perform bitwise AND on a TL bitmap and a negation of a bitmap and return the result
- *
- * @param _bitmap1 First operand
- * @param _bitmap2 Second operand
- *
- * @return A new bitmap, which is the logical AND NOT of the operands
- */
-#define UCP_TL_BITMAP_AND_NOT(_bitmap1, _bitmap2) \
-    UCS_STATIC_BITMAP_AND(_bitmap1, UCS_STATIC_BITMAP_NOT(_bitmap2))
-
-
-#define UCS_FP8_MIN_BW  (512 * UCS_MBYTE)
-#define UCS_FP8_MAX_BW  (4 * UCS_TBYTE)
-#define UCS_FP8_MIN_LAT UCS_BIT(4)
-#define UCS_FP8_MAX_LAT UCS_BIT(17)
-#define UCS_FP8_MIN_OVH UCS_BIT(0)
-#define UCS_FP8_MAX_OVH UCS_BIT(12)
-
-/* Pack bandwidth as bytes/second, range: 512 MB/s to 4 TB/s */
-UCS_FP8_DECLARE_TYPE(BANDWIDTH, UCS_FP8_MIN_BW, UCS_FP8_MAX_BW)
-
-
-/* Pack latency as nanoseconds, range: 16 nsec to 131 usec */
-UCS_FP8_DECLARE_TYPE(LATENCY, UCS_FP8_MIN_LAT, UCS_FP8_MAX_LAT)
-
-
-/* Pack overhead as nanoseconds, range: 1 nsec to 4 usec */
-UCS_FP8_DECLARE_TYPE(OVERHEAD, UCS_FP8_MIN_OVH, UCS_FP8_MAX_OVH)
-
-
-/**
- * Operation for which protocol is selected
- */
-typedef enum {
-    UCP_OP_ID_TAG_SEND,
-    UCP_OP_ID_TAG_SEND_SYNC,
-    UCP_OP_ID_AM_SEND,
-    UCP_OP_ID_AM_SEND_REPLY,
-    UCP_OP_ID_STREAM_SEND,
-    UCP_OP_ID_PUT,
-    UCP_OP_ID_GET,
-    UCP_OP_ID_AMO_POST,
-    UCP_OP_ID_AMO_FETCH,
-    UCP_OP_ID_AMO_CSWAP,
-    UCP_OP_ID_API_LAST,
-
-    /* Internal rendezvous operations */
-    UCP_OP_ID_RNDV_FIRST = UCP_OP_ID_API_LAST,
-    UCP_OP_ID_RNDV_SEND  = UCP_OP_ID_RNDV_FIRST,
-    UCP_OP_ID_RNDV_RECV,
-    UCP_OP_ID_RNDV_RECV_DROP,
-    UCP_OP_ID_RNDV_LAST,
-
-    UCP_OP_ID_LAST = UCP_OP_ID_RNDV_LAST
-} ucp_operation_id_t;
 
 
 /**
