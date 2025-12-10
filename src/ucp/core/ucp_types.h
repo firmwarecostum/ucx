@@ -8,7 +8,6 @@
 #define UCP_TYPES_H_
 
 #include <ucp/api/ucp.h>
-#include <ucs/type/float8.h>
 #include <uct/api/uct.h>
 #include <ucs/datastruct/static_bitmap.h>
 #include <ucs/sys/preprocessor.h>
@@ -124,15 +123,15 @@ extern const ucp_tl_bitmap_t ucp_tl_bitmap_min;
 #define UCS_FP8_MAX_OVH UCS_BIT(12)
 
 /* Pack bandwidth as bytes/second, range: 512 MB/s to 4 TB/s */
-UCS_FP8_DECLARE_TYPE(BANDWIDTH, UCS_FP8_MIN_BW, UCS_FP8_MAX_BW)
+UCS_FP8_DECLARE_TYPE(BANDWIDTH, UCS_FP8_MIN_BW, UCS_FP8_MAX_BW);
 
 
 /* Pack latency as nanoseconds, range: 16 nsec to 131 usec */
-UCS_FP8_DECLARE_TYPE(LATENCY, UCS_FP8_MIN_LAT, UCS_FP8_MAX_LAT)
+UCS_FP8_DECLARE_TYPE(LATENCY, UCS_FP8_MIN_LAT, UCS_FP8_MAX_LAT);
 
 
 /* Pack overhead as nanoseconds, range: 1 nsec to 4 usec */
-UCS_FP8_DECLARE_TYPE(OVERHEAD, UCS_FP8_MIN_OVH, UCS_FP8_MAX_OVH)
+UCS_FP8_DECLARE_TYPE(OVERHEAD, UCS_FP8_MIN_OVH, UCS_FP8_MAX_OVH);
 
 
 /**
